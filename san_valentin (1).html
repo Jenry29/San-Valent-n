@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffe6e6;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        #yes-button {
+            background-color: #ff6666;
+            color: white;
+        }
+        #no-button {
+            background-color: #cccccc;
+            color: black;
+            position: relative;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ff6666;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¿Michel, quieres ser mi San Valentín?</h1>
+        <div class="button-container">
+            <button id="yes-button" onclick="showYesMessage()">Sí</button>
+            <button id="no-button" onclick="moveNoButton()">No</button>
+        </div>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const messageDiv = document.getElementById('message');
+        const noMessages = [
+            "Por favor, no seas malito.",
+            "No te arrepentirás.",
+            "¡Acepta, lo pasaremos genial!",
+            "Vamos, di que sí.",
+            "¡Hazme feliz, por favor!",
+            "No seas tímido, di que sí.",
+            "¿En serio vas a decir que no?",
+            "Te invito a comer si aceptas.",
+            "¡Vamos, será divertido!",
+            "¿No te gustaría pasar un buen rato?",
+            "¡Di que sí, no te arrepentirás!",
+            "Hazlo por mí, porfa.",
+            "¡Piensa en lo felices que seremos!",
+            "Seré tu fan número uno si aceptas.",
+            "¡Vamos, sé valiente!"
+        ];
+
+        function showYesMessage() {
+            messageDiv.innerHTML = "¡Gracias por aceptar ser mi San Valentín, Michel! Lo pasaremos genial. ❤";
+            messageDiv.style.display = 'block';
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+        }
+
+        function moveNoButton() {
+            const randomIndex = Math.floor(Math.random() * noMessages.length);
+            noButton.innerHTML = noMessages[randomIndex];
+            noButton.style.top = `${Math.random() * 100}px`;
+            noButton.style.left = `${Math.random() * 100}px`;
+            yesButton.style.fontSize = `${parseInt(window.getComputedStyle(yesButton).fontSize) + 2}px`;
+        }
+    </script>
+</body>
+</html>
